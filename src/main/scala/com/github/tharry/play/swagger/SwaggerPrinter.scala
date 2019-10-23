@@ -3,6 +3,7 @@ package com.github.tharry.play.swagger
 import java.io.File
 
 import com.typesafe.config.ConfigFactory
+import play.api.Play
 
 object SwaggerPrinter {
   def main(args: Array[String]): Unit = {
@@ -11,14 +12,16 @@ object SwaggerPrinter {
 //    pw.write("Hello, world")
 //    pw.close
     println("AAAA")
-    val conf = ConfigFactory.parseFile(new File("conf/test.conf"))
-    //    println(conf)
-    //    val app = FakesFactory.fakeApplication(conf)
-    //    Play.start(app)
+    val conf = ConfigFactory.parseFile(new File("conf/test.conf")).resolve()
+
+    println(conf)
+
+    val app = FakesFactory.fakeApplication(conf)
+    //Play.start(app)
     //    val scanner = new PlayApiScanner()
     //    ApiListingCache.listing("", "127.0.0.1")
 
-    println(conf)
+    //Play.stop(app)
     println("ZZZZ")
 
   }
